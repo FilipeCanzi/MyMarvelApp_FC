@@ -7,4 +7,7 @@
 
 struct APIKey {
     
+    static let publicKey: String = ""
+    static let privateKey: String = ""
+    
 }
