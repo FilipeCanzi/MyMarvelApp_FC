@@ -13,6 +13,7 @@
 		5A0AC601293D53190071CCF3 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0AC600293D53190071CCF3 /* ResultViewController.swift */; };
 		5A2FB99F293C22100096FEE4 /* VDE_SearchDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FB99E293C22100096FEE4 /* VDE_SearchDescriptionLabel.swift */; };
 		5A2FB9A1293C251E0096FEE4 /* VDE_SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FB9A0293C251E0096FEE4 /* VDE_SearchTextField.swift */; };
+		5A384660293D6681008804EC /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A38465F293D6681008804EC /* APIKey.swift */; };
 		5A64C5F5293BD0C10057804B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64C5F4293BD0C10057804B /* AppDelegate.swift */; };
 		5A64C5F7293BD0C10057804B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64C5F6293BD0C10057804B /* SceneDelegate.swift */; };
 		5A64C5F9293BD0C10057804B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A64C5F8293BD0C10057804B /* SearchViewController.swift */; };
@@ -30,6 +31,7 @@
 		5A0AC600293D53190071CCF3 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		5A2FB99E293C22100096FEE4 /* VDE_SearchDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDE_SearchDescriptionLabel.swift; sourceTree = "<group>"; };
 		5A2FB9A0293C251E0096FEE4 /* VDE_SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDE_SearchTextField.swift; sourceTree = "<group>"; };
+		5A38465F293D6681008804EC /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		5A64C5F1293BD0C10057804B /* MyMarvelApp_FC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMarvelApp_FC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A64C5F4293BD0C10057804B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A64C5F6293BD0C10057804B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				5A0AC5FD293D4EE60071CCF3 /* AssetsConstants */,
 				5A0AC5F9293D47970071CCF3 /* Credits.swift */,
+				5A38465F293D6681008804EC /* APIKey.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				5A0AC5FF293D50E00071CCF3 /* VDE_SearchViewController.swift in Sources */,
 				5A0AC5FA293D47970071CCF3 /* Credits.swift in Sources */,
 				5A2FB99F293C22100096FEE4 /* VDE_SearchDescriptionLabel.swift in Sources */,
+				5A384660293D6681008804EC /* APIKey.swift in Sources */,
 				5A0AC601293D53190071CCF3 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
