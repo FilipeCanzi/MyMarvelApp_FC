@@ -31,7 +31,7 @@ extension UIButton {
             self.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
             self.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -20),
             self.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.30, constant: -20),
-            self.heightAnchor.constraint(equalTo: searchTextField.heightAnchor)
+            self.heightAnchor.constraint(equalToConstant: CSize.buttonHeight)
         ]
     }
     

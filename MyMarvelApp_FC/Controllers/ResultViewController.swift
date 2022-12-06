@@ -9,11 +9,36 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
+    var resultTitleLabel = UILabel()
+    var resultImageView = UIImageView()
+    var resultDescriptionLabel = UILabel()
+    var resultReturnButton = UIButton()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .systemGray3
+        
+        self.configureResultViewController(
+            view: view,
+            resultTitleLabel: resultTitleLabel,
+            resultImageView: resultImageView,
+            resultDescriptionLabel: resultDescriptionLabel,
+            resultReturnButton: resultReturnButton)
+        
+        resultReturnButton.addTarget(self, action: #selector(resultReturnButtonPressed(sender:)), for: .touchUpInside)
         
     }
 
+}
+
+
+// MARK: - @objc Methods
+
+extension ResultViewController {
+    
+    @objc func resultReturnButtonPressed(sender: UIButton) {
+        
+        navigationController?.popViewController(animated: true)
+        
+    }
 }

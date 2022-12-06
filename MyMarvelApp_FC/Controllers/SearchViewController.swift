@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
     var searchTextField = UITextField()
     var searchButton = UIButton()
     
+    var apiManager = MarvelAPIManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,8 @@ class SearchViewController: UIViewController {
         
         searchDescriptionLabel.text = "Choose Character Name:"
         searchButton.addTarget(self, action: #selector(searchButtonPressed(sender:)), for: .touchUpInside)
+        
+        apiManager.delegate = self
         
     }
 
@@ -39,16 +42,68 @@ extension SearchViewController {
     
     @objc func searchButtonPressed(sender: UIButton) {
         
-        navigationController?.pushViewController(ResultViewController(), animated: true)
+        let researchRequest = ResearchRequest(
+            marvelEntity: .characters,
+            marvelAttribute: .name,
+            userText: "Storm")
+        
+        
+        apiManager.makeApplicationCall(with: researchRequest)
+        
         
     }
 }
 
 
 
-// MARK: - UITextFieldDelegate
+// MARK: - MarvelAPIManagerDelegate
 
-extension SearchViewController: UITextFieldDelegate {
+extension SearchViewController: MarvelAPIManagerDelegate {
+    
+    
+    func didReceiveCharacterData(_: MarvelAPIManager, data: MarvelCharacterObject) {
+        
+        DispatchQueue.main.async {
+            
+            let resultVC = ResultViewController()
+            
+            let dataResult = data.data.results[0]
+
+            resultVC.resultTitleLabel.text = dataResult.name
+            resultVC.resultDescriptionLabel.text = dataResult.description
+            
+            let thumbnailURL: String = "\(dataResult.thumbnail.path).\(dataResult.thumbnail.extension)"
+            resultVC.resultImageView.loadImageFromURL(urlString: thumbnailURL)
+            
+            self.navigationController?.pushViewController(resultVC, animated: true)
+        }
+    }
+    
+    
+    func didReceiveComicsData(_: MarvelAPIManager, data: MarvelComicsObject) {
+        
+        DispatchQueue.main.async {
+            
+            let resultVC = ResultViewController()
+            
+            let dataResult = data.data.results[0]
+
+            resultVC.resultTitleLabel.text = dataResult.title
+            resultVC.resultDescriptionLabel.text = dataResult.description
+            
+            let thumbnailURL: String = "\(dataResult.thumbnail.path).\(dataResult.thumbnail.extension)"
+            resultVC.resultImageView.loadImageFromURL(urlString: thumbnailURL)
+            
+            self.navigationController?.pushViewController(resultVC, animated: true)
+        }
+    }
+    
+    
+    func didFailWithError(err: Error?) {
+        if let err { print(err) }
+    }
+    
+    
     
 }
 

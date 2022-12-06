@@ -14,8 +14,9 @@ extension UILabel {
         view.addSubview(self)
         
         self.translatesAutoresizingMaskIntoConstraints = false
+        
         self.numberOfLines = 0
-        self.font = UIFont.systemFont(ofSize: 15)
+        self.font = UIFont.systemFont(ofSize: 18)
         
     }
     
@@ -23,7 +24,7 @@ extension UILabel {
     func searchDescriptionLabelConstraints(
         view: UIView,
         searchTextField: UITextField
-    )-> [NSLayoutConstraint] {
+    ) -> [NSLayoutConstraint] {
 
         [
             self.bottomAnchor.constraint(equalTo: searchTextField.topAnchor, constant: -15),

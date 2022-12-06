@@ -20,8 +20,7 @@ extension UITextField {
         
         self.returnKeyType = .search
          
-    }
-    
+    }    
     
     func searchTextFieldConstraints(
         view: UIView
@@ -30,7 +29,7 @@ extension UITextField {
             self.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             self.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 20),
             self.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.68, constant: -20),
-            self.heightAnchor.constraint(equalToConstant: 40)
+            self.heightAnchor.constraint(equalToConstant: CSize.buttonHeight)
             
         ]
     }
