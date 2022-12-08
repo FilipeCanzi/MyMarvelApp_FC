@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct MarvelComicsObject: Decodable {
+struct MarvelComicsObject: MarvelObject {
     
     let data: MarvelComicsContainer
     
 }
 
 
-struct MarvelComicsContainer: Decodable {
+struct MarvelComicsContainer: MarvelContainer {
     
     let offset: Int
     let limit: Int
@@ -25,7 +25,7 @@ struct MarvelComicsContainer: Decodable {
 }
 
 
-struct MarvelComicsData: Decodable {
+struct MarvelComicsData: MarvelData {
     
     let id: Int
     let description: String
