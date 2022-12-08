@@ -203,8 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				5A0AC5FD293D4EE60071CCF3 /* AssetsConstants */,
-				5A0AC5F9293D47970071CCF3 /* Credits.swift */,
 				5A38465F293D6681008804EC /* APIKey.swift */,
+				5A0AC5F9293D47970071CCF3 /* Credits.swift */,
 				5AA03331293D8589005363FF /* CSize.swift */,
 			);
 			path = Constants;
@@ -374,6 +374,7 @@
 /* Begin XCBuildConfiguration section */
 		5A64C606293BD0C20057804B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A1F8E7E294168F200F6779E /* ApiKeysConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -434,6 +435,7 @@
 		};
 		5A64C607293BD0C20057804B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A1F8E7E294168F200F6779E /* ApiKeysConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

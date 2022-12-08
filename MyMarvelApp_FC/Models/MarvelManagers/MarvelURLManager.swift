@@ -38,12 +38,29 @@ struct MarvelURLManager {
         
         let timeStamp = String(format: "%.0f", Date().timeIntervalSince1970)
         
-        let preDigestedKey: String = timeStamp + APIKey.privateKey + APIKey.publicKey
-        let digestedKey: String = encryptMD5(string: preDigestedKey)
+        if let publicKey = APIKey.publicKey, let privateKey = APIKey.privateKey {
+            
+            let preDigestedKey: String = timeStamp + privateKey + publicKey
+            let digestedKey: String = encryptMD5(string: preDigestedKey)
+            let urlKey = "ts=\(timeStamp)&apikey=\(publicKey)&hash=\(digestedKey)"
+            
+            return urlKey
+            
+        } else {
+            
+            print(
+            "You Will Need a Public and Private Marvel API Key to be able to search for this content. You can make one for free at: https://developer.marvel.com/ . When you get one, go to MyMarvelApp_FC/Constants/APIKey.swift file and change the values with your API Keys.")
+            
+            return ""
+            
+        }
         
-        let urlKey = "ts=\(timeStamp)&apikey=\(APIKey.publicKey)&hash=\(digestedKey)"
         
-        return urlKey
+        
+        
+        
+        
+        
         
     }
     

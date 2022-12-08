@@ -85,8 +85,6 @@ extension MarvelAPIManager {
             
             let apiObject = MarvelCharacterObject(data: decodedData.data)
             
-            print(apiObject)
-            
             self.delegate?.didReceiveCharacterData(self, data: apiObject)
         }
         catch {
