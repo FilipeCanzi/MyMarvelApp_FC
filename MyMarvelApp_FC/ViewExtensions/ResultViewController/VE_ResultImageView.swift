@@ -21,15 +21,28 @@ extension UIImageView {
     
     func resultImageViewConstraints(
         view: UIView,
-        resultTitleLabel: UILabel
+        resultTitleLabel: UILabel,
+        resultDescriptionLabel: UILabel,
+        resultReturnButton: UIButton
     ) -> [NSLayoutConstraint] {
 
-        [
-            self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            self.topAnchor.constraint(equalTo: resultTitleLabel.bottomAnchor, constant: 20),
-            self.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.40),
-        ]
-        
+        switch UIDevice.current.orientation {
+            
+        case .landscapeLeft, .landscapeRight:
+            return [
+                self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                self.topAnchor.constraint(equalTo: resultTitleLabel.bottomAnchor, constant: 20),
+                self.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.40),
+            ]
+            
+            
+        default:
+            return [
+                self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                self.topAnchor.constraint(equalTo: resultTitleLabel.bottomAnchor, constant: 20),
+                self.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.40),
+            ]
+        }
     }
     
 }

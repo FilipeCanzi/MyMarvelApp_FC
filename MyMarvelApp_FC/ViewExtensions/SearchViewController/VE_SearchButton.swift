@@ -25,14 +25,29 @@ extension UIButton {
     
     func searchButtonConstraints(
         view: UIView,
+        searchDescriptionLabel: UILabel,
         searchTextField: UITextField
     ) -> [NSLayoutConstraint] {
-        [
-            self.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
-            self.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -20),
-            self.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.30, constant: -20),
-            self.heightAnchor.constraint(equalToConstant: CSize.buttonHeight)
-        ]
+        
+        switch UIDevice.current.orientation {
+            
+        case .landscapeLeft, .landscapeRight:
+            return [
+                self.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
+                self.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -20),
+                self.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.30, constant: -20),
+                self.heightAnchor.constraint(equalToConstant: CSize.buttonHeight)
+            ]
+            
+            
+        default:
+            return [
+                self.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
+                self.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -20),
+                self.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.30, constant: -20),
+                self.heightAnchor.constraint(equalToConstant: CSize.buttonHeight)
+            ]
+        }
     }
     
 }

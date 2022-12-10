@@ -23,15 +23,32 @@ extension UITextField {
     }    
     
     func searchTextFieldConstraints(
-        view: UIView
+        view: UIView,
+        searchDescriptionLabel: UILabel,
+        searchButton: UIButton
     ) -> [NSLayoutConstraint] {
-        [
-            self.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            self.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 20),
-            self.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.68, constant: -20),
-            self.heightAnchor.constraint(equalToConstant: CSize.buttonHeight)
+        
+        switch UIDevice.current.orientation {
             
-        ]
+        case .landscapeLeft, .landscapeRight:
+            return [
+                self.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                self.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 20),
+                self.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.68, constant: -20),
+                self.heightAnchor.constraint(equalToConstant: CSize.buttonHeight)
+                
+            ]
+            
+            
+        default:
+            return [
+                self.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                self.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 20),
+                self.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.68, constant: -20),
+                self.heightAnchor.constraint(equalToConstant: CSize.buttonHeight)
+                
+            ]
+        }
     }
     
 }

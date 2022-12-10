@@ -23,14 +23,26 @@ extension UILabel {
     
     func searchDescriptionLabelConstraints(
         view: UIView,
-        searchTextField: UITextField
+        searchTextField: UITextField,
+        searchButton: UIButton
     ) -> [NSLayoutConstraint] {
-
-        [
-            self.bottomAnchor.constraint(equalTo: searchTextField.topAnchor, constant: -15),
-            self.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor)
-        ]
         
+        switch UIDevice.current.orientation {
+            
+        case .landscapeLeft, .landscapeRight:
+            return [
+                self.bottomAnchor.constraint(equalTo: searchTextField.topAnchor, constant: -15),
+                self.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor)
+            ]
+            
+            
+        default:
+            return [
+                self.bottomAnchor.constraint(equalTo: searchTextField.topAnchor, constant: -15),
+                self.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor)
+            ]
+            
+        }
     }
     
 }

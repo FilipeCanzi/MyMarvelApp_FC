@@ -21,14 +21,27 @@ extension UILabel {
     
     
     func resultTitleLabelConstraints(
-        view: UIView
+        view: UIView,
+        resultImageView: UIImageView,
+        resultDescriptionLabel: UILabel,
+        resultReturnButton: UIButton
     ) -> [NSLayoutConstraint] {
 
-        [
-            self.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
-            self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ]
-        
+        switch UIDevice.current.orientation {
+            
+        case .landscapeLeft, .landscapeRight:
+            return [
+                self.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
+                self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            ]
+            
+            
+        default:
+            return [
+                self.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
+                self.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            ]
+        }
     }
     
 }
