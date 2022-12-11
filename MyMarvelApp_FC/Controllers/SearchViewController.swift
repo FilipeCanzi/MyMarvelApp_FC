@@ -59,36 +59,24 @@ extension SearchViewController {
 // MARK: - MarvelAPIManagerDelegate
 
 extension SearchViewController: MarvelAPIManagerDelegate {
+
     
-    
-    func didReceiveCharacterData(_: MarvelAPIManager, data: MarvelCharacterObject) {
-        
+    func didReceiveData(_: MarvelAPIManager, data: MarvelObject, researchRequest: ResearchRequest) {
+     
         DispatchQueue.main.async {
             
             let resultVC = ResultViewController()
             
             let dataResult = data.data.results[0]
-
-            resultVC.resultTitleLabel.text = dataResult.name
-            resultVC.resultDescriptionLabel.text = dataResult.description
             
-            let thumbnailURL: String = "\(dataResult.thumbnail.path).\(dataResult.thumbnail.extension)"
-            resultVC.resultImageView.loadImageFromURL(urlString: thumbnailURL)
+            switch researchRequest.marvelEntity {
+                
+            case .comics:
+                resultVC.resultTitleLabel.text = dataResult.title
+            case .characters:
+                resultVC.resultTitleLabel.text = dataResult.name
+            }
             
-            self.navigationController?.pushViewController(resultVC, animated: true)
-        }
-    }
-    
-    
-    func didReceiveComicsData(_: MarvelAPIManager, data: MarvelComicsObject) {
-        
-        DispatchQueue.main.async {
-            
-            let resultVC = ResultViewController()
-            
-            let dataResult = data.data.results[0]
-
-            resultVC.resultTitleLabel.text = dataResult.title
             resultVC.resultDescriptionLabel.text = dataResult.description
             
             let thumbnailURL: String = "\(dataResult.thumbnail.path).\(dataResult.thumbnail.extension)"
@@ -101,10 +89,7 @@ extension SearchViewController: MarvelAPIManagerDelegate {
     
     func didFailWithError(err: Error?) {
         if let err { print(err) }
-    }
-    
-    
-    
+    } 
 }
 
 

@@ -10,8 +10,7 @@ import UIKit
 protocol MarvelAPIManagerDelegate {
     
     func didFailWithError(err: Error?)
-    func didReceiveCharacterData(_: MarvelAPIManager, data: MarvelCharacterObject)
-    func didReceiveComicsData(_: MarvelAPIManager, data: MarvelComicsObject)
+    func didReceiveData(_: MarvelAPIManager, data: MarvelObject, researchRequest: ResearchRequest)
     
 }
 
@@ -54,59 +53,28 @@ struct MarvelAPIManager {
             task.resume()
             
         }
-    }
-    
-
-    
+    } 
 }
 
 
-// MARK: - ParseJSON Methods
+// MARK: - ParseJSON Method
 
 extension MarvelAPIManager {
     
-    
     func parseJSON(urlData: Data, researchRequest: ResearchRequest) {
         
-        switch researchRequest.marvelEntity {
-            
-        case .comics:
-            comicsParseJSON(urlData: urlData)
-        case .characters:
-            characterParseJSON(urlData: urlData)
-        }
-    }
-    
-    
-    func characterParseJSON(urlData: Data) {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(MarvelCharacterObject.self, from: urlData)
+            let decodedData = try decoder.decode(MarvelObject.self, from: urlData)
             
-            let apiObject = MarvelCharacterObject(data: decodedData.data)
+            let apiObject = MarvelObject(data: decodedData.data)
             
-            self.delegate?.didReceiveCharacterData(self, data: apiObject)
-        }
-        catch {
-            self.delegate?.didFailWithError(err: error)
-        }
-    }
-    
-    
-    func comicsParseJSON(urlData: Data) {
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try decoder.decode(MarvelComicsObject.self, from: urlData)
-            
-            let apiObject = MarvelComicsObject(data: decodedData.data)
-            
-            self.delegate?.didReceiveComicsData(self, data: apiObject)
+            self.delegate?.didReceiveData(self, data: apiObject, researchRequest: researchRequest)
         }
         catch {
             self.delegate?.didFailWithError(err: error)
         }
         
     }
-    
     
 }
