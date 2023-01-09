@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MarvelCharacterData" representedClassName="MarvelCharacterData" syncable="YES" codeGenerationType="class">
+        <attribute name="characterDescription" attributeType="String"/>
+        <attribute name="characterID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="characterImageName" optional="YES" attributeType="String"/>
+        <attribute name="characterName" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MarvelComicsData" representedClassName="MarvelComicsData" syncable="YES" codeGenerationType="class">
+        <attribute name="comicsDescription" attributeType="String"/>
+        <attribute name="comicsID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="comicsImageName" optional="YES" attributeType="String"/>
+        <attribute name="comicsTitle" optional="YES" attributeType="String"/>
+        <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+</model>

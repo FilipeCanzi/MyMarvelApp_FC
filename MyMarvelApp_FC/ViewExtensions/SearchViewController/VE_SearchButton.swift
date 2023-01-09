@@ -24,12 +24,13 @@ extension UIButton {
     
     
     func searchButtonConstraints(
+        deviceOrientation: UIDeviceOrientation,
         view: UIView,
         searchDescriptionLabel: UILabel,
         searchTextField: UITextField
     ) -> [NSLayoutConstraint] {
         
-        switch UIDevice.current.orientation {
+        switch deviceOrientation {
             
         case .landscapeLeft, .landscapeRight:
             return [

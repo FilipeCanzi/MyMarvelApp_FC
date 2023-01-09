@@ -54,14 +54,7 @@ struct MarvelURLManager {
             return ""
             
         }
-        
-        
-        
-        
-        
-        
-        
-        
+          
     }
     
     

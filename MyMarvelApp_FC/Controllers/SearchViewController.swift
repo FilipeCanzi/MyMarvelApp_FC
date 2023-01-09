@@ -25,6 +25,7 @@ class SearchViewController: UIViewController {
             searchButton: searchButton)
         
         searchDescriptionLabel.text = "Choose Character Name:"
+        searchTextField.placeholder = "Enter Character Name"
         searchButton.addTarget(self, action: #selector(searchButtonPressed(sender:)), for: .touchUpInside)
         
         apiManager.delegate = self
@@ -47,9 +48,7 @@ extension SearchViewController {
             marvelAttribute: .name,
             userText: "Storm")
         
-        
         apiManager.makeApplicationCall(with: researchRequest)
-        
         
     }
 }
@@ -64,28 +63,13 @@ extension SearchViewController: MarvelAPIManagerDelegate {
     func didReceiveData(_: MarvelAPIManager, data: MarvelObject, researchRequest: ResearchRequest) {
      
         DispatchQueue.main.async {
-            
-            let resultVC = ResultViewController()
-            
             let dataResult = data.data.results[0]
             
-            switch researchRequest.marvelEntity {
-                
-            case .comics:
-                resultVC.resultTitleLabel.text = dataResult.title
-            case .characters:
-                resultVC.resultTitleLabel.text = dataResult.name
-            }
-            
-            resultVC.resultDescriptionLabel.text = dataResult.description
-            
-            let thumbnailURL: String = "\(dataResult.thumbnail.path).\(dataResult.thumbnail.extension)"
-            resultVC.resultImageView.loadImageFromURL(urlString: thumbnailURL)
+            let resultVC = ResultViewController(data: dataResult, researchRequest: researchRequest)
             
             self.navigationController?.pushViewController(resultVC, animated: true)
         }
     }
-    
     
     func didFailWithError(err: Error?) {
         if let err { print(err) }
@@ -93,3 +77,27 @@ extension SearchViewController: MarvelAPIManagerDelegate {
 }
 
 
+// MARK: - Orientation Methods
+
+extension SearchViewController {
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+
+        super.viewWillTransition(to: size, with: coordinator)
+                
+        removeAndAddAllSubviews(view: view)
+        
+        NSLayoutConstraint.activate(
+            searchViewControllerConstrains(
+                deviceOrientation: UIDevice.current.orientation,
+                view: view,
+                searchDescriptionLabel: searchDescriptionLabel,
+                searchTextField: searchTextField,
+                searchButton: searchButton
+            )
+        )
+        
+    }
+    
+    
+}

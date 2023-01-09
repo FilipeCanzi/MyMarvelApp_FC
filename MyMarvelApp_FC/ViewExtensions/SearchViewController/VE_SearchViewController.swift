@@ -23,34 +23,37 @@ extension UIViewController {
         searchTextField.configureSearchTextField(view: view)
         
         searchButton.configureSearchButton(view: view)
-        
-        activateSearchViewControllerConstraints(
-            view: view,
-            searchDescriptionLabel: searchDescriptionLabel,
-            searchTextField: searchTextField,
-            searchButton: searchButton)
-        
+                
+        NSLayoutConstraint.activate(
+            searchViewControllerConstrains(
+                deviceOrientation: UIDevice.current.orientation,
+                view: view,
+                searchDescriptionLabel: searchDescriptionLabel,
+                searchTextField: searchTextField,
+                searchButton: searchButton
+            )
+        )
+            
     }
     
-    
-    func activateSearchViewControllerConstraints(
+
+
+    func searchViewControllerConstrains(
+        deviceOrientation: UIDeviceOrientation,
         view: UIView,
         searchDescriptionLabel: UILabel,
         searchTextField: UITextField,
         searchButton: UIButton
-    ) {
+    ) -> [NSLayoutConstraint] {
         
-        NSLayoutConstraint.activate(
-            
-            searchTextField.searchTextFieldConstraints(view: view, searchDescriptionLabel: searchDescriptionLabel, searchButton: searchButton) +
-            
-            searchDescriptionLabel.searchDescriptionLabelConstraints(view: view, searchTextField: searchTextField, searchButton: searchButton) +
-            
-            searchButton.searchButtonConstraints(view: view, searchDescriptionLabel: searchDescriptionLabel, searchTextField: searchTextField)
+        searchTextField.searchTextFieldConstraints(deviceOrientation: deviceOrientation, view: view, searchDescriptionLabel: searchDescriptionLabel, searchButton: searchButton) +
         
-        )
+        searchDescriptionLabel.searchDescriptionLabelConstraints(deviceOrientation: deviceOrientation, view: view, searchTextField: searchTextField, searchButton: searchButton) +
+        
+        searchButton.searchButtonConstraints(deviceOrientation: deviceOrientation, view: view, searchDescriptionLabel: searchDescriptionLabel, searchTextField: searchTextField)
         
     }
     
-    
 }
+
+

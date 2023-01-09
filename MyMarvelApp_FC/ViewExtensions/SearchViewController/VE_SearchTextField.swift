@@ -23,13 +23,14 @@ extension UITextField {
     }    
     
     func searchTextFieldConstraints(
+        deviceOrientation: UIDeviceOrientation,
         view: UIView,
         searchDescriptionLabel: UILabel,
         searchButton: UIButton
     ) -> [NSLayoutConstraint] {
-        
-        switch UIDevice.current.orientation {
-            
+                
+        switch deviceOrientation {
+          
         case .landscapeLeft, .landscapeRight:
             return [
                 self.centerYAnchor.constraint(equalTo: view.centerYAnchor),

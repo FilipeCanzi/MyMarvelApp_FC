@@ -18,20 +18,22 @@ extension UILabel {
         self.numberOfLines = 0
         self.font = UIFont.systemFont(ofSize: 18)
         
+        
     }
     
     
     func searchDescriptionLabelConstraints(
+        deviceOrientation: UIDeviceOrientation,
         view: UIView,
         searchTextField: UITextField,
         searchButton: UIButton
     ) -> [NSLayoutConstraint] {
         
-        switch UIDevice.current.orientation {
+        switch deviceOrientation {
             
         case .landscapeLeft, .landscapeRight:
             return [
-                self.bottomAnchor.constraint(equalTo: searchTextField.topAnchor, constant: -15),
+                self.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 15),
                 self.leadingAnchor.constraint(equalTo: searchTextField.leadingAnchor)
             ]
             
