@@ -16,12 +16,8 @@
 		5A2FB99F293C22100096FEE4 /* VE_SearchDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FB99E293C22100096FEE4 /* VE_SearchDescriptionLabel.swift */; };
 		5A2FB9A1293C251E0096FEE4 /* VE_SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2FB9A0293C251E0096FEE4 /* VE_SearchTextField.swift */; };
 		5A384660293D6681008804EC /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A38465F293D6681008804EC /* APIKey.swift */; };
-		5A384662293D6E55008804EC /* VE_ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A384661293D6E55008804EC /* VE_ResultViewController.swift */; };
-		5A384664293D6FBC008804EC /* VE_ResultTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A384663293D6FBC008804EC /* VE_ResultTitleLabel.swift */; };
-		5A384666293D704A008804EC /* VE_ResultImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A384665293D704A008804EC /* VE_ResultImageView.swift */; };
-		5A384668293D713D008804EC /* VE_ResultDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A384667293D713D008804EC /* VE_ResultDescriptionLabel.swift */; };
-		5A38466A293D7195008804EC /* VE_ResultReturnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A384669293D7195008804EC /* VE_ResultReturnButton.swift */; };
 		5A468888296B7FE100221E44 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A468887296B7FE100221E44 /* DatabaseManager.swift */; };
+		5A46888B296B9EEB00221E44 /* ResultViewAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46888A296B9EEB00221E44 /* ResultViewAssistant.swift */; };
 		5A5D4D902948B62D00886198 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D4D8F2948B62D00886198 /* WelcomeViewController.swift */; };
 		5A5D4D932948B65C00886198 /* VE_WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D4D922948B65C00886198 /* VE_WelcomeViewController.swift */; };
 		5A5D4D952948B83D00886198 /* VE_WelcomeMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5D4D942948B83D00886198 /* VE_WelcomeMessageLabel.swift */; };
@@ -57,12 +53,8 @@
 		5A2FB99E293C22100096FEE4 /* VE_SearchDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VE_SearchDescriptionLabel.swift; sourceTree = "<group>"; };
 		5A2FB9A0293C251E0096FEE4 /* VE_SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VE_SearchTextField.swift; sourceTree = "<group>"; };
 		5A38465F293D6681008804EC /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		5A384661293D6E55008804EC /* VE_ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VE_ResultViewController.swift; sourceTree = "<group>"; };
-		5A384663293D6FBC008804EC /* VE_ResultTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VE_ResultTitleLabel.swift; sourceTree = "<group>"; };
-		5A384665293D704A008804EC /* VE_ResultImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VE_ResultImageView.swift; sourceTree = "<group>"; };
-		5A384667293D713D008804EC /* VE_ResultDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VE_ResultDescriptionLabel.swift; sourceTree = "<group>"; };
-		5A384669293D7195008804EC /* VE_ResultReturnButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VE_ResultReturnButton.swift; sourceTree = "<group>"; };
 		5A468887296B7FE100221E44 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		5A46888A296B9EEB00221E44 /* ResultViewAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewAssistant.swift; sourceTree = "<group>"; };
 		5A5D4D8F2948B62D00886198 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		5A5D4D922948B65C00886198 /* VE_WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VE_WelcomeViewController.swift; sourceTree = "<group>"; };
 		5A5D4D942948B83D00886198 /* VE_WelcomeMessageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VE_WelcomeMessageLabel.swift; sourceTree = "<group>"; };
@@ -123,18 +115,6 @@
 				5A0AC5FB293D4C340071CCF3 /* AColor.swift */,
 			);
 			path = AssetsConstants;
-			sourceTree = "<group>";
-		};
-		5A0AC602293D53460071CCF3 /* ResultViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5A384661293D6E55008804EC /* VE_ResultViewController.swift */,
-				5A384663293D6FBC008804EC /* VE_ResultTitleLabel.swift */,
-				5A384665293D704A008804EC /* VE_ResultImageView.swift */,
-				5A384667293D713D008804EC /* VE_ResultDescriptionLabel.swift */,
-				5A384669293D7195008804EC /* VE_ResultReturnButton.swift */,
-			);
-			path = ResultViewController;
 			sourceTree = "<group>";
 		};
 		5A2FB99D293C21C60096FEE4 /* SearchViewController */ = {
@@ -200,7 +180,7 @@
 				5AB068CC293EE1BE00495A44 /* Enumerations */,
 				5A64C610293BD1500057804B /* Constants */,
 				5A64C60D293BD0FF0057804B /* Models */,
-				5A64C60E293BD1060057804B /* ViewExtensions */,
+				5A64C60E293BD1060057804B /* Views */,
 				5A64C60F293BD11B0057804B /* Controllers */,
 				5A64C615293BF0FA0057804B /* Assets */,
 				5A64C605293BD0C20057804B /* Info.plist */,
@@ -231,14 +211,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		5A64C60E293BD1060057804B /* ViewExtensions */ = {
+		5A64C60E293BD1060057804B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5A003D312968FEFA0041F1AB /* API Key Registration Views */,
 				5A2FB99D293C21C60096FEE4 /* SearchViewController */,
-				5A0AC602293D53460071CCF3 /* ResultViewController */,
+				5A46888A296B9EEB00221E44 /* ResultViewAssistant.swift */,
 			);
-			path = ViewExtensions;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		5A64C60F293BD11B0057804B /* Controllers */ = {
@@ -370,13 +350,9 @@
 			files = (
 				5A5D4D902948B62D00886198 /* WelcomeViewController.swift in Sources */,
 				5AB068CB293EE12000495A44 /* MarvelAttribute.swift in Sources */,
-				5A38466A293D7195008804EC /* VE_ResultReturnButton.swift in Sources */,
-				5A384666293D704A008804EC /* VE_ResultImageView.swift in Sources */,
 				5A64C5F9293BD0C10057804B /* SearchViewController.swift in Sources */,
-				5A384664293D6FBC008804EC /* VE_ResultTitleLabel.swift in Sources */,
 				5A0AC5FC293D4C340071CCF3 /* AColor.swift in Sources */,
 				5AB068C5293EDFC000495A44 /* MarvelAPIManager.swift in Sources */,
-				5A384668293D713D008804EC /* VE_ResultDescriptionLabel.swift in Sources */,
 				5A64C5FF293BD0C10057804B /* MarvelAppDatabase.xcdatamodeld in Sources */,
 				5A5D4D932948B65C00886198 /* VE_WelcomeViewController.swift in Sources */,
 				5A5D4D952948B83D00886198 /* VE_WelcomeMessageLabel.swift in Sources */,
@@ -397,11 +373,11 @@
 				5A5D4D992948B85F00886198 /* VE_FirstUserButton.swift in Sources */,
 				5A468888296B7FE100221E44 /* DatabaseManager.swift in Sources */,
 				5ABD1244294EA400003E3730 /* Ext_UIViewController.swift in Sources */,
+				5A46888B296B9EEB00221E44 /* ResultViewAssistant.swift in Sources */,
 				5A5D4D972948B84C00886198 /* VE_WelcomeQuestionLabel.swift in Sources */,
 				5A384660293D6681008804EC /* APIKey.swift in Sources */,
 				5A17DAAD29456C8D008D4249 /* MarvelObjects.swift in Sources */,
 				5A0AC601293D53190071CCF3 /* ResultViewController.swift in Sources */,
-				5A384662293D6E55008804EC /* VE_ResultViewController.swift in Sources */,
 				5AB068C7293EE00800495A44 /* ResearchRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,23 +9,22 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
-    var resultTitleLabel = UILabel()
-    var resultImageView = UIImageView()
-    var resultDescriptionLabel = UILabel()
-    var resultReturnButton = UIButton()
+    var resultViewAssistant = ResultViewAssistant()
     
     var data: MarvelData?
     var researchRequest: ResearchRequest?
     
+    var resultTitleLabel = UILabel()
+    var resultImageView = UIImageView()
+    var resultDescriptionLabel = UILabel()
+    var resultReturnButton = UIButton()
+    var resultFavoriteButton = UIButton()
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureResultViewController(
-            view: view,
-            resultTitleLabel: resultTitleLabel,
-            resultImageView: resultImageView,
-            resultDescriptionLabel: resultDescriptionLabel,
-            resultReturnButton: resultReturnButton)
+        resultViewAssistant.configure(view: view)
         
         resultReturnButton.addTarget(self, action: #selector(resultReturnButtonPressed(sender:)), for: .touchUpInside)
         
