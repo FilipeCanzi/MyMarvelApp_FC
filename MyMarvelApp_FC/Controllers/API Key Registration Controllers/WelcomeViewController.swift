@@ -9,6 +9,8 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    var welcomeViewAssistant: WelcomeViewAssistant?
+    
     var welcomeMessageLabel = UILabel()
     var welcomeQuestionLabel = UILabel()
     var firstUserButton = UIButton()

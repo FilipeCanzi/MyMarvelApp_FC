@@ -7,101 +7,153 @@
 
 import UIKit
 
-protocol ResultViewAssistantDelegate {
-        
-    var resultTitleLabel: UILabel { get }
-    var resultImageView: UIImageView { get }
-    var resultDescriptionLabel: UILabel { get }
-    var resultReturnButton: UIButton { get }
-    var resultFavoriteButton: UIButton { get }
-    
-}
-
 class ResultViewAssistant {
     
-    var delegate: ResultViewAssistantDelegate?
+    let controller: ResultViewController
     
-    var resultTitleLabel = UILabel()
-    var resultImageView = UIImageView()
-    var resultDescriptionLabel = UILabel()
-    var resultReturnButton = UIButton()
-    var resultFavoriteButton = UIButton()
+    let view: UIView
+    
+    let resultTitleLabel: UILabel
+    let resultImageView: UIImageView
+    let resultDescriptionLabel: UILabel
+    let resultReturnButton: UIButton
+    let resultFavoriteButton: UIButton
     
     
-    func configure(view: UIView) {
-                
-        print("SETUP DONE")
+    init(controller: ResultViewController) {
         
-        setupResultViewAssistant()
+        self.controller = controller
         
-        print("SETUP DONE")
+        self.view = controller.view
         
+        self.resultTitleLabel = controller.resultTitleLabel
+        self.resultImageView = controller.resultImageView
+        self.resultDescriptionLabel = controller.resultDescriptionLabel
+        self.resultReturnButton = controller.resultReturnButton
+        self.resultFavoriteButton = controller.resultFavoriteButton
+        
+    }
+    
+    
+    func configure() {
+                       
         view.backgroundColor = UIColor(named: AColor.backgroundColor)
 
-        configureResultTitleLabel(view: view)
-//        configureResultImageView(view: view)
-//        configureResultDescriptionLabel(view: view)
-//        configureResultReturnButton(view: view)
+        configureResultTitleLabel()
+        configureResultImageView()
+        configureResultDescriptionLabel()
+        configureResultReturnButton()
         
-        activateResultViewConstraints(view: view)
+        activateResultViewConstraints()
 
     }
-    
-    func setupResultViewAssistant() {
         
-        guard
-            let resultTitleLabel  = delegate?.resultTitleLabel,
-            let resultImageView  = delegate?.resultImageView,
-            let resultDescriptionLabel  = delegate?.resultDescriptionLabel,
-            let resultReturnButton  = delegate?.resultReturnButton,
-            let resultFavoriteButton  = delegate?.resultFavoriteButton
-        else { return }
-        
-        self.resultTitleLabel = resultTitleLabel
-        self.resultImageView = resultImageView
-        self.resultDescriptionLabel = resultDescriptionLabel
-        self.resultReturnButton = resultReturnButton
-        self.resultFavoriteButton = resultFavoriteButton
-        
-    }
     
-    
-    func activateResultViewConstraints(view: UIView) {
+    func activateResultViewConstraints() {
         
         NSLayoutConstraint.activate(
             
-            resultTitleLabelConstraints(view: view)
+            resultTitleLabelConstraints()
             +
-            resultImageViewConstraints(view: view)
+            resultImageViewConstraints()
             +
-            resultDescriptionLabelConstraints(view: view)
+            resultDescriptionLabelConstraints()
             +
-            resultReturnButtonConstraints(view: view)
+            resultReturnButtonConstraints()
             
         )
         
     }
     
-    func configureResultTitleLabel(view: UIView) {
+    
+    func viewIsTransiting() {
+        controller.removeAndAddAllSubviews(view: view)
+        activateResultViewConstraints()
+    }
+    
+}
+
+
+
+// MARK: - ResultTitleLabel
+
+extension ResultViewAssistant {
+    
+    func configureResultTitleLabel() {
                 
         view.addSubview(resultTitleLabel)
         
         resultTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         resultTitleLabel.numberOfLines = 0
         resultTitleLabel.font = UIFont.systemFont(ofSize: 25)
+        
     }
     
-    func configureResultImageView(view: UIView) {
+    
+    func resultTitleLabelConstraints() -> [NSLayoutConstraint] {
+        
+        switch UIDevice.current.orientation {
+            
+        case .landscapeLeft, .landscapeRight:
+            return [
+                resultTitleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
+                resultTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            ]
+            
+        default:
+            return [
+                resultTitleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
+                resultTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            ]
+        }
+    }
+    
+}
+
+
+// MARK: - ResultImageView
+
+extension ResultViewAssistant {
+    
+    func configureResultImageView() {
         
         view.addSubview(resultImageView)
         
         resultImageView.translatesAutoresizingMaskIntoConstraints = false
         resultImageView.contentMode = .scaleAspectFit
 
-        
     }
     
-    func configureResultDescriptionLabel(view: UIView) {
+    
+    func resultImageViewConstraints() -> [NSLayoutConstraint] {
+        
+        switch UIDevice.current.orientation {
+            
+        case .landscapeLeft, .landscapeRight:
+            return [
+                resultImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                resultImageView.topAnchor.constraint(equalTo: resultTitleLabel.bottomAnchor, constant: 20),
+                resultImageView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.40),
+            ]
+            
+            
+        default:
+            return [
+                resultImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                resultImageView.topAnchor.constraint(equalTo: resultTitleLabel.bottomAnchor, constant: 20),
+                resultImageView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.40),
+            ]
+        }
+    }
+    
+}
+
+
+// MARK: - ResultDescriptionLabel
+
+extension ResultViewAssistant {
+    
+    func configureResultDescriptionLabel() {
                 
         view.addSubview(resultDescriptionLabel)
         
@@ -112,7 +164,35 @@ class ResultViewAssistant {
         
     }
     
-    func configureResultReturnButton(view: UIView) {
+    
+    func resultDescriptionLabelConstraints() -> [NSLayoutConstraint] {
+        
+        switch UIDevice.current.orientation {
+            
+        case .landscapeLeft, .landscapeRight:
+            return [
+                resultDescriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                resultDescriptionLabel.topAnchor.constraint(equalTo: resultImageView.bottomAnchor, constant: 20),
+                resultDescriptionLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.90)
+            ]
+            
+        default:
+            return [
+                resultDescriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                resultDescriptionLabel.topAnchor.constraint(equalTo: resultImageView.bottomAnchor, constant: 20),
+                resultDescriptionLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.90)
+            ]
+        }
+    }
+    
+}
+
+
+// MARK: - ResultReturnButton
+
+extension ResultViewAssistant {
+    
+    func configureResultReturnButton() {
                 
         view.addSubview(resultReturnButton)
         
@@ -126,76 +206,7 @@ class ResultViewAssistant {
     }
     
     
-}
-
-
-
-// MARK: - Auto Layout Constraints
-extension ResultViewAssistant {
-    
-    func resultTitleLabelConstraints(view: UIView) -> [NSLayoutConstraint] {
-        
-        switch UIDevice.current.orientation {
-            
-        case .landscapeLeft, .landscapeRight:
-            return [
-                resultTitleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
-                resultTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            ]
-            
-        default:
-            return [
-                resultTitleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
-                resultTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            ]
-        }
-    }
-    
-    
-    func resultImageViewConstraints(view: UIView) -> [NSLayoutConstraint] {
-        
-        switch UIDevice.current.orientation {
-            
-        case .landscapeLeft, .landscapeRight:
-            return [
-                resultImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                resultImageView.topAnchor.constraint(equalTo: resultTitleLabel.bottomAnchor, constant: 20),
-                resultImageView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.40),
-            ]
-            
-            
-        default:
-            return [
-                resultImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                resultImageView.topAnchor.constraint(equalTo: resultTitleLabel.bottomAnchor, constant: 20),
-                resultImageView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor, multiplier: 0.40),
-            ]
-        }
-    }
-    
-    
-    func resultDescriptionLabelConstraints(view: UIView) -> [NSLayoutConstraint] {
-        
-        switch UIDevice.current.orientation {
-            
-        case .landscapeLeft, .landscapeRight:
-            return [
-                resultDescriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                resultDescriptionLabel.topAnchor.constraint(equalTo: resultImageView.bottomAnchor, constant: 20),
-                resultDescriptionLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.90)
-            ]
-            
-        default:
-            return [
-                resultDescriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                resultDescriptionLabel.topAnchor.constraint(equalTo: resultImageView.bottomAnchor, constant: 20),
-                resultDescriptionLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.90)
-            ]
-        }
-    }
-    
-    
-    func resultReturnButtonConstraints(view: UIView) -> [NSLayoutConstraint] {
+    func resultReturnButtonConstraints() -> [NSLayoutConstraint] {
         
         switch UIDevice.current.orientation {
             
@@ -214,7 +225,5 @@ extension ResultViewAssistant {
             ]
         }
     }
-    
-    
     
 }

@@ -9,20 +9,20 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    var searchDescriptionLabel = UILabel()
-    var searchTextField = UITextField()
-    var searchButton = UIButton()
+    var searchViewAssistant: SearchViewAssistant?
     
     var apiManager = MarvelAPIManager()
     
+    let searchDescriptionLabel = UILabel()
+    let searchTextField = UITextField()
+    let searchButton = UIButton()
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureSearchViewController(
-            view: view,
-            searchDescriptionLabel: searchDescriptionLabel,
-            searchTextField: searchTextField,
-            searchButton: searchButton)
+        searchViewAssistant = SearchViewAssistant(controller: self)
+        searchViewAssistant?.configure()
         
         searchDescriptionLabel.text = "Choose Character Name:"
         searchTextField.placeholder = "Enter Character Name"
@@ -82,20 +82,10 @@ extension SearchViewController: MarvelAPIManagerDelegate {
 extension SearchViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-
+        
         super.viewWillTransition(to: size, with: coordinator)
                 
-        removeAndAddAllSubviews(view: view)
-        
-        NSLayoutConstraint.activate(
-            searchViewControllerConstrains(
-                deviceOrientation: UIDevice.current.orientation,
-                view: view,
-                searchDescriptionLabel: searchDescriptionLabel,
-                searchTextField: searchTextField,
-                searchButton: searchButton
-            )
-        )
+        searchViewAssistant?.viewIsTransiting()
         
     }
     

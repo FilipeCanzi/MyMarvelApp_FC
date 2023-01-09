@@ -9,22 +9,23 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
-    var resultViewAssistant = ResultViewAssistant()
+    var resultViewAssistant: ResultViewAssistant?
     
     var data: MarvelData?
     var researchRequest: ResearchRequest?
     
-    var resultTitleLabel = UILabel()
-    var resultImageView = UIImageView()
-    var resultDescriptionLabel = UILabel()
-    var resultReturnButton = UIButton()
-    var resultFavoriteButton = UIButton()
+    let resultTitleLabel = UILabel()
+    let resultImageView = UIImageView()
+    let resultDescriptionLabel = UILabel()
+    let resultReturnButton = UIButton()
+    let resultFavoriteButton = UIButton()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resultViewAssistant.configure(view: view)
+        resultViewAssistant = ResultViewAssistant(controller: self)
+        resultViewAssistant?.configure()
         
         resultReturnButton.addTarget(self, action: #selector(resultReturnButtonPressed(sender:)), for: .touchUpInside)
         
@@ -62,4 +63,20 @@ extension ResultViewController {
         navigationController?.popViewController(animated: true)
         
     }
+}
+
+
+// MARK: - Orientation Methods
+
+extension ResultViewController {
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        super.viewWillTransition(to: size, with: coordinator)
+                
+        resultViewAssistant?.viewIsTransiting()
+        
+    }
+    
+    
 }
